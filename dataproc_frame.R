@@ -71,8 +71,6 @@ ggsave(paste(fn,'.png',sep=''),dpi = 300, width = 9.6, height = 6.4)
 
 # 以下、笑顔出現ごとの詳細データ抽出
 
-a
-
 # 抽出するデータ指定、各AUの強度、今は目の端、口の端のXY座標を指定している
 # データ指定についてはOpenFaceのwiki参照
 focusData<-list('AU06_r','AU07_r','AU12_r','X_36','X_45','X_48','X_53', 'Y_36','Y_45','Y_48','Y_53')
