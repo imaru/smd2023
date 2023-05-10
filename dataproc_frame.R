@@ -98,9 +98,9 @@ for (dd in 1:length(gdata)){
   YL<-str_detect(gdata[[num]]$mark, pattern='Y')
   
   # グラフ作成
-  aug<-ggplot(gdata[[num]][AUL,],aes(x=frame, y=value, color=mark))+geom_line()
-  xg<-ggplot(gdata[[num]][XL,],aes(x=frame, y=value, color=mark))+geom_line()
-  yg<-ggplot(gdata[[num]][YL,],aes(x=frame, y=value, color=mark))+geom_line()
+  aug<-ggplot(gdata[[num]][AUL,],aes(x=frame, y=value, linetype=mark))+geom_line()
+  xg<-ggplot(gdata[[num]][XL,],aes(x=frame, y=value, linetype=mark))+geom_line()
+  yg<-ggplot(gdata[[num]][YL,],aes(x=frame, y=value, linetype=mark))+geom_line()
   
   # グラフ表示
   ggpubr::ggarrange(xg, yg, aug, nrow=2, ncol=2, align="hv", common.legend = FALSE)
