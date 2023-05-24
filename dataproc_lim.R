@@ -83,8 +83,10 @@ gdata<-apply(frames,1,function(y,tau=target_au,fD=focusData){
   return(longd)
 },target_au,focusData)
 
-xmax=10
-ymax=5
+xmax=5
+auymax=5
+coymax=200
+coymin=-200
 
 # 詳細な図作成
 
@@ -100,9 +102,9 @@ for (dd in 1:length(gdata)){
   YL<-str_detect(gdata[[num]]$mark, pattern='Y')
   
   # グラフ作成
-  aug<-ggplot(gdata[[num]][AUL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)+ylim(0,ymax)
-  xg<-ggplot(gdata[[num]][XL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)
-  yg<-ggplot(gdata[[num]][YL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)
+  aug<-ggplot(gdata[[num]][AUL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)+ylim(0,auymax)+xlab('Duration(sec.)')+ylab('Amplitude(a.u.)')
+  xg<-ggplot(gdata[[num]][XL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)+xlab('Duration(sec.)')+ylab('Coordinate')+ylim(coymin,coymax)
+  yg<-ggplot(gdata[[num]][YL,],aes(x=frame/30, y=value, color=mark))+geom_line()+xlim(0,xmax)+xlab('Duration(sec.)')+ylab('Coordinate')+ylim(coymin,coymax)
   
   # グラフ表示
   ggpubr::ggarrange(xg, yg, aug, nrow=2, ncol=2, align="hv", common.legend = FALSE)
